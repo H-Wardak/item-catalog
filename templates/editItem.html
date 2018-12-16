@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% block content %}
+
+<h2>Edit Item</h2>
+<div class="editForm">
+	<form method="POST" action="{{url_for('editItem', item_name = item_name)}}">
+		<label>Title</label>		
+		<input type="text" name="tile" value="{{item_name}}">
+
+		<label>Description</label>
+		<input type="text" name="description" value="{{description}}">
+
+		<label>Category</label>
+		<select>
+			{% for value in category %}
+			<option value='{{value}}'>{{value}}</option>
+			{% endfor %}
+		</select>		
+		<input type="submit" value="Submit">
+
+	</form>
+	
+</div>
+
+{% endblock %}
