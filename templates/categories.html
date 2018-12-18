@@ -2,10 +2,20 @@
 {% block content %}
 <div class="categories">
 	<h2>Categories</h2>
+	{% for cat in cat_list %}
+	<a href="{{url_for('showCatItems', cat_name = cat.name)}}">{{cat.name}}</a></br>
+	{% endfor %}
 </div>
 
 <div class="LatestItems">
 	<h2>Latest Items</h2>
+	{% for item in item_list %}
+	{% set catName = cat_list[(item.cat_id)-1].name %}
+	<a href="{{url_for('showItemInfo', cat_name = catName, item_title = item.title)}}">{{item.title}}</a>
+	<i>({{catName}})</i>
+</br>
+	
+	{% endfor %}
 </div>
 
 {% endblock %}

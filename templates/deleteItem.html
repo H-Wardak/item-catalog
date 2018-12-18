@@ -2,9 +2,10 @@
 {% block content %}
 <h2>Delete Item</h2>
 <div class="delForm">
-	<form method="POST" action="{{url_for('deleteItem', item_name = item_name)}}">
-		<label>Are you sure you want to delete? </label>
-		<input type="submit" value="Submit">
+	<form method="POST" action="{{url_for('deleteItem', item_title = item_title)}}">
+		<label>Are you sure you want to delete <b>{{item_title}}</b>? </label></br>
+		<input type="submit" value="Submit"></br>
+		<a href="{{url_for('showItemInfo', cat_name = cat_name, item_title = item_title)}}">Cancel</a>
 	</form>
 
 </div>

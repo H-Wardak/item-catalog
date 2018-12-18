@@ -3,20 +3,29 @@
 
 <h2>Edit Item</h2>
 <div class="editForm">
-	<form method="POST" action="{{url_for('editItem', item_name = item_name)}}">
+	<form method="POST" action="{{url_for('editItem', item_title = item.title)}}" id="edit_item">
 		<label>Title</label>		
-		<input type="text" name="tile" value="{{item_name}}">
-
+		</br>
+		<input type="text" name="title" value="{{item.title}}">
+		</br>
 		<label>Description</label>
-		<input type="text" name="description" value="{{description}}">
-
+		</br>
+		<input type="text" name="description" value="{{item.description}}">
+		</br>
 		<label>Category</label>
-		<select>
-			{% for value in category %}
-			<option value='{{value}}'>{{value}}</option>
+		</br>
+		<select name="cat_list" form="edit_item">
+			{% for name in cat_name_list %}
+			{% if name.name == cat_name %}
+			<option value='{{name.name}}' selected="selected">{{name.name}}</option>
+			{% else %}
+			<option value='{{name.name}}'>{{name.name}}</option>
+			{% endif %}
 			{% endfor %}
-		</select>		
+		</select>
+		</br>
 		<input type="submit" value="Submit">
+		<a href="{{url_for('showItemInfo', cat_name = cat_name, item_title = item.title)}}">Cancel</a>
 
 	</form>
 	

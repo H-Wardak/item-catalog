@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+
+<h2>Edit Item</h2>
+<div class="addForm">
+	<form method="POST" action="{{url_for('addItem')}}" id="add_item">
+		<label>Title</label>		
+		</br>
+		<input type="text" name="title">
+		</br>
+		<label>Description</label>
+		</br>
+		<input type="text" name="description">
+		</br>
+		<label>Category</label>
+		</br>
+		<select name="cat_list" form="add_item">
+			{% for name in cat_name_list %}
+			<option value='{{name.name}}'>{{name.name}}</option>
+			{% endfor %}
+		</select>
+		</br>
+		<input type="submit" value="Submit">
+		<a href="{{url_for('showCategories')}}">Cancel</a>
+
+	</form>
+	
+</div>
+
+{% endblock %}
