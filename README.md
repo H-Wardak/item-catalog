@@ -3,8 +3,8 @@ This application provides a list of items within a variety of categories as well
 
 ## How to Run?
 The application is develped using Python language, leveraged Flask framework utilities and data stroed in SQLite DB.
-1- Run ``` python database_setup.py ```
-2- Run ``` python application.py ```
-3- Run the application on Port 8000
+- Run ``` python database_setup.py ```
+- Run ``` python application.py ```
+- Run the application on Port 8000
 
 
