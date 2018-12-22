@@ -4,6 +4,11 @@
 <div class="LatestItems">
 	<h2>{{item_title}}</h2>
 	<p>{{description}}</p>
+	{% if owner_id == session['user_id'] %}
+		<a href="{{url_for('editItem', item_title = item_title)}}">Edit</a> | 
+		<a href="{{url_for('deleteItem', item_title = item_title)}}">Delete</a>
+	{% endif %}
+
 </div>
 
 {% endblock %}

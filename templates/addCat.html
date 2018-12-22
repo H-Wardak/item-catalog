@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% block content %}
+
+<h2>Add Category</h2>
+<div class="addCatForm">
+	<form method="POST" action="{{url_for('addCat')}}" id="add_Cat_form">
+		<label>Name</label>		
+		</br>
+		<input type="text" name="catNameTxtBox">
+		</br>
+		<input type="submit" value="Submit">
+		<a href="{{url_for('showCategories')}}">Cancel</a>
+	</form>
+</div>
+
+{% endblock %}

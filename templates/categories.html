@@ -1,13 +1,34 @@
 {% extends "main.html" %}
 {% block content %}
+
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+      {% if messages %}     
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+
 <div class="categories">
+	<br>
+	{% if 'username' in session %}
+		<a href="{{url_for('addCat')}}">Add Category</a>
+	{% endif %}
 	<h2>Categories</h2>
 	{% for cat in cat_list %}
 	<a href="{{url_for('showCatItems', cat_name = cat.name)}}">{{cat.name}}</a></br>
 	{% endfor %}
 </div>
-
+<br>
+<br>
 <div class="LatestItems">
+	{% if 'username' in session %}
+		<a href="{{url_for('addItem')}}">Add Item</a>
+	{% endif %}
 	<h2>Latest Items</h2>
 	{% for item in item_list %}
 	{% set catName = cat_list[(item.cat_id)-1].name %}
