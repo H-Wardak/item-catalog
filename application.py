@@ -90,7 +90,7 @@ def editItem(item_title):
         item.cat_id = cat_id+1
         session.add(item)
         session.commit()
-        flash('Item %s Successfully modified')
+        flash('Item %s Successfully modified' %item.title)
         return redirect(
             url_for('showItemInfo', cat_name=newCat, item_title=item.title))
     else:
@@ -115,7 +115,7 @@ def deleteItem(item_title):
     if request.method == 'POST':
         session.delete(itemToDelete)
         session.commit()
-        flash('Item deleted %s Successfully')
+        flash('Item deleted Successfully')
         return redirect(url_for('showCategories'))
     else:
         return render_template('deleteItem.html',
@@ -237,9 +237,9 @@ def gconnect():
     if not user_id:
         user_id = createUser(login_session)
         print("New User added to DB ", login_session['username'])
-        login_session['user_id'] = user_id
         flash("New User added to DB ", login_session['username'])
 
+    login_session['user_id'] = user_id
     output = ''
     output += '<h1>Welcome, '
     output += login_session['username']
@@ -287,8 +287,7 @@ def gdisconnect():
     print('In gdisconnect access token is ', access_token)
     print('User name is: ')
     print(login_session['username'])
-    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s'
-    % login_session['access_token']
+    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s'% login_session['access_token']
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
     print('result is ')
